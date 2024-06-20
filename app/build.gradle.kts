@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "cafe.serenity.windytest"
+    namespace = "cafe.serenity.flow_summarizer"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "cafe.serenity.windytest"
+        applicationId = "cafe.serenity.flow_summarizer"
         minSdk = 28
         targetSdk = 34
         versionCode = 1

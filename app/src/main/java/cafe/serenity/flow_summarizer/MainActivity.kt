@@ -1,4 +1,4 @@
-package cafe.serenity.windytest
+package cafe.serenity.flow_summarizer
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -30,7 +30,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cafe.serenity.windytest.ui.theme.WindyTestTheme
+import cafe.serenity.flow_summarizer.ui.theme.FlowSummarizerTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
     fun SummarizerScreen(state: SummarizerUIState, onEvent: (Event) -> Unit) {
         val focusManager = LocalFocusManager.current
 
-        WindyTestTheme {
+        FlowSummarizerTheme {
             // A surface container using the 'background' color from the theme
             Surface(
                 color = MaterialTheme.colorScheme.background

@@ -1,4 +1,4 @@
-package cafe.serenity.windytest.ui.theme
+package cafe.serenity.flow_summarizer.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
