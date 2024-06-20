@@ -86,18 +86,16 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.fillMaxWidth(),
                             keyboardOptions = KeyboardOptions.Default.copy(
                                 keyboardType = KeyboardType.NumberPassword,
-                                imeAction = if (state.inputError.isBlank()) {
-                                    ImeAction.Done
-                                } else {
-                                    ImeAction.None
-                                }
+                                imeAction = ImeAction.Done
                             ),
-                            isError = state.inputError.isNotEmpty(),
+                            isError = state.inputError.isNotBlank(),
                             singleLine = true,
                             keyboardActions = KeyboardActions(
                                 onDone = {
-                                    onEvent(Event.Summarize)
-                                    focusManager.clearFocus()
+                                    if (state.inputError.isBlank()) {
+                                        onEvent(Event.Summarize)
+                                        focusManager.clearFocus()
+                                    }
                                 }
                             ),
                             label = {
@@ -110,7 +108,7 @@ class MainActivity : ComponentActivity() {
                         )
                         IconButton(
                             onClick = {
-                                if(state.inputError.isBlank()) {
+                                if (state.inputError.isBlank()) {
                                     onEvent(Event.Summarize)
                                     focusManager.clearFocus()
                                 }
@@ -156,12 +154,17 @@ class SummarizerViewModel : ViewModel() {
                 } else if (!input.all { it in '0'..'9' }) {
                     error = "Input is not numeric"
                 }
-                userInputFlow.value = UserInput(input, error)
+                userInputFlow.value = UserInput(
+                    input = input,
+                    error = error
+                )
             }
 
             is Event.Summarize -> {
                 if (userInputFlow.value.error.isBlank()) {
                     val processedVal = userInputFlow.value.input.toInt()
+                    // if output for N is already on the screen
+                    // app is not going to redo/reemit the calculations
                     if (outputFlow.value.outputFor != processedVal) {
                         outputFlow.value = Output(outputFor = processedVal)
                         (0 until processedVal).asFlow().onEach {
