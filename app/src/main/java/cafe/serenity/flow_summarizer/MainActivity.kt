@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -28,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cafe.serenity.flow_summarizer.ui.theme.FlowSummarizerTheme
@@ -73,6 +75,7 @@ class MainActivity : ComponentActivity() {
                         text = "${state.processedVal}:\n${state.numbers.joinToString("\n")}",
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(16.dp)
                             .weight(1f, true)
                             .verticalScroll(rememberScrollState())
                     )
