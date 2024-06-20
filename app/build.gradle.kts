@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "cafe.serenity.flow_summarizer"
-        minSdk = 28
+        minSdk = 22
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
